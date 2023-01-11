@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### UserConfig Example File (.yaml) ###
-src/main/java/com/example/hhhard/apps/
+src/main/java/com/example/hhhard/apps/*.yaml

@@ -38,3 +38,4 @@ out/
 
 ### UserConfig Example File (.yaml) ###
 src/main/java/com/example/hhhard/apps/*.yaml
+*.yaml

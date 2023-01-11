@@ -9,7 +9,8 @@ const AppSearchBar = ({ AppName , SetAppName , Content , SetContent}) => {
         <div>
             <>
                 <input  onChange={(e)=> {
-                    SetAppName(e.target.value)}}/>
+                    SetAppName(e.target.value)
+                }}/>
                 <button type={"button"} onClick={()=>{
                     axios
                         .get('/db/'+ AppName)

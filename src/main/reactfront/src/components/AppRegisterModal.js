@@ -31,17 +31,18 @@ function AppRegisterModal() {
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">app name</label>
-                                <input onChange={(e)=>{SetAppName(e.target.value)}} type="text" className="form-control" name="app_name"/>
+                                <input onChange={(e)=>{SetAppName(e.target.value)
+                                    console.log(e.target.value)}} type="text" className="form-control" name="app_name"/>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">manager Email</label>
                                 <input onChange={(e)=>{SetEmail(e.target.value)}} type="email" className="form-control"/>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">manager name</label>
                                 <input onChange={(e)=>{SetManagerName(e.target.value)}} type="text" className="form-control"/>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">user id</label>
-                                <input onChange={(e)=>{SetAppName(e.target.value)}}type="text" className="form-control"/>
+                                <input onChange={(e)=>{SetUserId(e.target.value)}} type="text" className="form-control"/>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">user name</label>
-                                <input type="text" className="form-control"/>
+                                <input onChange={(e)=>{SetUserName(e.target.value)}} type="text" className="form-control"/>
                                 <label htmlFor="exampleFormControlTextarea1" className="form-label">configuration</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>                            </div>
+                                <textarea onChange={(e)=>{SetConfig(e.target.value)}} className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>                            </div>
                         </Form.Group>
                     </Form>
                 </Modal.Body>

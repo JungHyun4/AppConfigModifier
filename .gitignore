@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### UserConfig Example File (.yaml) ###
+/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps

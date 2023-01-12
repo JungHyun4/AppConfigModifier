@@ -6,17 +6,18 @@ import lombok.*;
 
 @Getter
 @ToString
-@Entity(name = "app")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "app")
+
 public class ConfigEntity {
     @Id
     private String appName;
     @jakarta.persistence.Column(nullable = false)
     private String appPath;
     @jakarta.persistence.Column
-    private  String userId;
+    private String userId;
     @jakarta.persistence.Column
     private String userName;
     @jakarta.persistence.Column
@@ -29,6 +30,4 @@ public class ConfigEntity {
         this.appName = appName;
         this.appPath = appPath;
     }
-
-
 }

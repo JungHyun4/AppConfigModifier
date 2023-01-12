@@ -46,7 +46,12 @@ spring:
           writetimeout: 5000
   profile:
     active: local
-    asd
-    asd
-    asd
-    asd
+
+jasypt:
+  encryptor:
+    bean: encryptorBean
+
+
+logging:
+  config: config/logback-spring.xml
+

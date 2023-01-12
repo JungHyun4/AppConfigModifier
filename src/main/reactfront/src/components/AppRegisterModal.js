@@ -51,7 +51,9 @@ function AppRegisterModal() {
                         Close
                     </Button>
                     <Button variant="primary" onClick={()=>{
-                    axios.post()}
+                    axios.post("/db/config" ,{"appName" : AppName, "appPath" : "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/"+AppName ,"managerEmail" : Email , "managerName" : ManagerName, "userId" :UserId ,  "userName" : UserName ,"content" : Config  })
+                        .then((response) => console.log(response));
+                    }
                     }>
                         Register
                     </Button>

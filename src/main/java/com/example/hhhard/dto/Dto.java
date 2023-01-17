@@ -4,10 +4,12 @@ import lombok.*;
 import com.example.hhhard.entity.ConfigEntity;
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @ToString
-public class Dto {
+public class Dto{
+
     public String appName;
     public String appPath;
     public String managerEmail;
@@ -22,7 +24,7 @@ public class Dto {
         this.content = content;
     }
 
-    public ConfigEntity dtoToEntity(){
+    public ConfigEntity toEntity(){
         return (new ConfigEntity(this.appName,this.appPath,this.userId,this.userName,this.managerName, this.managerEmail));
     }
 

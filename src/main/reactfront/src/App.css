@@ -91,3 +91,24 @@
 .d-tree-toggler.active {
   transform: rotate(45deg);
 }
+
+.TreeContainer{
+  height: 500px;
+  width: 100%
+}
+.left {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+.right {
+  width: 80%;
+  height: 100%;
+  float: right;
+}
+ul{
+  list-style: none;
+}
+li{
+  list-style: none;
+}

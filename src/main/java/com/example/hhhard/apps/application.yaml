@@ -6,7 +6,7 @@ app-configuration:
     #bluebox2: config/naver-bluebox2.yaml
 
 server:
-  port: 8080
+    port: 8080
 
 http:
   connectTimeout: 10
@@ -54,4 +54,3 @@ jasypt:
 
 logging:
   config: config/logback-spring.xml
-

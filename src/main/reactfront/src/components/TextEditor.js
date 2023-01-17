@@ -3,7 +3,7 @@ import '/Users/junghyun/IdeaProjects/hhhard/src/main/reactfront/src/App.css';
 import axios from "axios";
 
 
-const ConfigModifier = ({AppName,Content,SetContent,Color}) => {
+const TextEditor = ({AppName,Content,SetContent,Color}) => {
     return(
         <form onSubmit={(e)=> {
             axios.post("/db/" + AppName,{"appName":AppName , "content":Content})
@@ -21,4 +21,4 @@ const ConfigModifier = ({AppName,Content,SetContent,Color}) => {
 
 
 
-export default ConfigModifier;
+export default TextEditor;

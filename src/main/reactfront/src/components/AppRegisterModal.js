@@ -16,11 +16,18 @@ function AppRegisterModal() {
     const[UserId, SetUserId] = useState("")
     const[UserName , SetUserName] = useState("")
     const[Config, SetConfig] = useState("")
-
+    const Init = () => {
+        SetAppName("");
+        SetEmail("");
+        SetManagerName("");
+        SetUserId("");
+        SetUserName("");
+        SetConfig("");
+    }
     return (
         <>
             <button variant="primary" onClick={handleShow}>
-                Regisger
+                Register
             </button>
             <Modal style={{background:"black"}} show={show} >
                 <Modal.Header>
@@ -51,8 +58,27 @@ function AppRegisterModal() {
                         Close
                     </Button>
                     <Button variant="primary" onClick={()=>{
-                    axios.post("/db/config" ,{"appName" : AppName, "appPath" : "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/"+AppName ,"managerEmail" : Email , "managerName" : ManagerName, "userId" :UserId ,  "userName" : UserName ,"content" : Config  })
-                        .then((response) => console.log(response));
+                        if(AppName == ""){
+                            alert("app name은 필수 입력항목입니다.")
+                        }
+                        else if (AppName.at(-1) != "l"){
+                            alert("파일 형식을 확인해주세요.")
+                        }
+                        else {
+                            axios.post("/db/config", {
+                                "appN1ame": AppName,
+                                "appPath": "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/" + AppName,
+                                "managerEmail": Email,
+                                "managerName": ManagerName,
+                                "userId": UserId,
+                                "userName": UserName,
+                                "content": Config
+                            })
+                                .then((response) => console.log(response));
+                                alert("등록되었습니다.");
+                                Init();
+
+                        }
                     }
                     }>
                         Register

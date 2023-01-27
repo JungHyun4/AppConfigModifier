@@ -2,6 +2,7 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "github:fortawesome/react-fontawesome",
     "fortawesome": "^0.0.1-security",
+    "fs": "^0.0.1-security",
     "yamljs": "^0.3.0"
   }
 }

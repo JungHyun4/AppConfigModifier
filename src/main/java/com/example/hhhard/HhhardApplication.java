@@ -10,6 +10,7 @@ public class HhhardApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HhhardApplication.class, args);
+
     }
 
 }

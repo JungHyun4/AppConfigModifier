@@ -3,10 +3,15 @@ import '/Users/junghyun/IdeaProjects/hhhard/src/main/reactfront/src/App.css';
 import yaml from "js-yaml";
 
 
+
+let t = "";
+
 const TreeEditor =  ({AppName ,  Content , Color}) =>{
 
-    const [arrow , Setarrow] = useState("▶");
-    const [current, SetCurrent] = useState("");
+
+
+    const [arrow , Setarrow] = useState(true);
+    const [current, SetCurrent] = useState([]);
 
     const data = yaml.load(Content);
     const headers = Object.keys(data);
@@ -16,14 +21,18 @@ const TreeEditor =  ({AppName ,  Content , Color}) =>{
         const HeaderList = headers.map((header) => <li onClick={()=>{
 
             if(typeof data[header] == "object"){
-                SetCurrent(current + JSON.stringify(data[header]))
+                SetCurrent(data[header])
             }
             else{
                 SetCurrent("asd")
             }
-            SetCurrent(JSON.stringify(data[header]))
+            SetCurrent()
+            console.log(printTree(data[header]))
 
-        }}>{header}<a onClick={ () => {Setarrow("▼")} }> {arrow}</a></li>);
+
+        }}>{header}<a onClick={ () => {
+
+           arrow? Setarrow(false):Setarrow(true)} }> {arrow? ">" : "v"}</a></li>);
 
         return (<ul>{HeaderList}</ul>)
     }
@@ -31,7 +40,7 @@ const TreeEditor =  ({AppName ,  Content , Color}) =>{
 
     return (
         <div>
-            <input style={ {color:Color}}  name="appName" className="AppName" readOnly={true} defaultValue={AppName}></input>
+            <label style={ {color:Color}}  name="appName" className="AppName" >{AppName}</label>
 
             <div className="TreeContainer">
 
@@ -40,30 +49,25 @@ const TreeEditor =  ({AppName ,  Content , Color}) =>{
                 </div>
 
                 <div className="right">
-                    <text>{current}</text>
+                    <div>{current}</div>
                 </div>
             </div>
         </div>
     )
 }
-const sample = (data) => {
-    const headers = Object.keys(data);
-    const HeaderList = headers.map((header) => <li>{header}</li>);
 
-    return (<ul>{HeaderList}</ul>)
-}
+
 
 
 
 function printTree(data){
     try {
         const keys = Object.keys(data)
-
         for (let i = 0; i < keys.length; i++) {
             if (isLeaf(data[keys[i]])) {
-                console.log(keys[i].toString() + "  " + data[keys[i]].toString())
+                console.log(t+ keys[i]+ "  " + data[keys[i]])
             } else {
-                console.log(keys[i])
+                console.log( keys[i])
                 printTree(data[keys[i]])
             }
         }
@@ -71,8 +75,6 @@ function printTree(data){
     catch (e) {
         console.log(e)
     }
-
-
 }
 function isLeaf(data){
     if(typeof data == "object"){

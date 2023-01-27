@@ -5,11 +5,10 @@ import TextEditor from "./components/TextEditor";
 import AppRegisterModal from "./components/AppRegisterModal"
 import TreeEditor from "./components/TreeEditor";
 
-
 const Default_Mode = React.createContext("TextEditor");
 
 function App() {
-
+    const [Apps, SetApps] = useState([]);
     const [AppName, SetAppName] = useState("");
     const[Content, SetContent] = useState("");
     const[Color , SetColor] = useState("black");

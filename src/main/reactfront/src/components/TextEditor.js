@@ -11,8 +11,8 @@ const TextEditor = ({AppName,Content,SetContent,Color}) => {
             alert("저장되었습니다.")
             // window.location.reload();
         }}>
-            <input style={ {color:Color}}  name="appName" className="AppName" readOnly={true} defaultValue={AppName}></input>
-            <textarea className="TextBox" name="content" defaultValue={Content} onChange={(e)=>{
+            <label style={ {color:Color}}  name="appName" className="AppName" readOnly={true} >{AppName}</label>
+            <textarea className="TextBox" name="content" value={Content} onChange={(e)=>{
                 SetContent(e.target.value)}}></textarea>
             <button type="submit" className="submitBtn">저장하기</button>
         </form>

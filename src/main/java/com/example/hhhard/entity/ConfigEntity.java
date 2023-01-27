@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 public class ConfigEntity extends BaseTimeEntity{
     @Id
-@Column
+    @Column
     private String appName;
     @jakarta.persistence.Column(nullable = false)
     private String appPath;

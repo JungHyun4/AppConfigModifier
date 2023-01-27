@@ -1,5 +1,6 @@
 package com.example.hhhard.service;
 
+import com.example.hhhard.repository.ConfigRepository;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,15 @@ import java.util.Map;
 
 @Service
 public class FileOpenService {
+
+    ConfigRepository configRepository;
+    FileOpenService(ConfigRepository C){
+        this.configRepository = C;
+    }
+
     public Map<String,String> openFile(String appName)
     {
+
         try {
             String path = "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/"+appName;
             File file = new File(path);

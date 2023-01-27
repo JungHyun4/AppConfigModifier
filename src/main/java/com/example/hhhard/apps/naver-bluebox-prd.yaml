@@ -195,4 +195,4 @@ schedule:
     fileevent:
       path: ORDERSTATUS
       includeOld: true
-      file: '*.*'   
+      file: '*.*'

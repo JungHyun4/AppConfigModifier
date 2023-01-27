@@ -1,10 +1,17 @@
 package com.example.hhhard.service;
 import com.example.hhhard.dto.Dto;
+import com.example.hhhard.repository.ConfigRepository;
 import org.springframework.stereotype.Service;
 import java.io.*;
 
 @Service
 public class FileWriteService {
+
+    private final ConfigRepository configRepository;
+    FileWriteService(ConfigRepository c){
+        this.configRepository = c;
+    }
+
     public void write(Dto app)
     {
         File f = new File("/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/" + app.appName);

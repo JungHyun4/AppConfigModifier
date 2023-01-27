@@ -40,6 +40,8 @@ function AppRegisterModal() {
                                 <label htmlFor="exampleFormControlInput1" className="form-label">app name</label>
                                 <input onChange={(e)=>{SetAppName(e.target.value)
                                     console.log(e.target.value)}} type="text" className="form-control" name="app_name"/>
+                                <label htmlFor="exampleFormControlInput1" className="form-label">중복확인 레이블</label>
+                                <p></p>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">manager Email</label>
                                 <input onChange={(e)=>{SetEmail(e.target.value)}} type="email" className="form-control"/>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">manager name</label>
@@ -49,7 +51,8 @@ function AppRegisterModal() {
                                 <label htmlFor="exampleFormControlInput1" className="form-label">user name</label>
                                 <input onChange={(e)=>{SetUserName(e.target.value)}} type="text" className="form-control"/>
                                 <label htmlFor="exampleFormControlTextarea1" className="form-label">configuration</label>
-                                <textarea onChange={(e)=>{SetConfig(e.target.value)}} className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>                            </div>
+                                <textarea onChange={(e)=>{SetConfig(e.target.value)}} className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            </div>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -66,16 +69,18 @@ function AppRegisterModal() {
                         }
                         else {
                             axios.post("/db/config", {
-                                "appN1ame": AppName,
+                                "appName": AppName,
                                 "appPath": "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/" + AppName,
                                 "managerEmail": Email,
                                 "managerName": ManagerName,
                                 "userId": UserId,
                                 "userName": UserName,
                                 "content": Config
-                            })
+                            }
+                            )
                                 .then((response) => console.log(response));
                                 alert("등록되었습니다.");
+                                console.log(AppName);
                                 Init();
 
                         }

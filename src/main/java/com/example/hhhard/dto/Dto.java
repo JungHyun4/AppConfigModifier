@@ -1,7 +1,9 @@
 package com.example.hhhard.dto;
 
+import jakarta.persistence.Id;
 import lombok.*;
 import com.example.hhhard.entity.ConfigEntity;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -10,6 +12,7 @@ import com.example.hhhard.entity.ConfigEntity;
 @ToString
 public class Dto{
 
+    @Id
     public String appName;
     public String appPath;
     public String managerEmail;

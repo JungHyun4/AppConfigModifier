@@ -1,6 +1,7 @@
 package com.example.hhhard.service;
 
 import com.example.hhhard.repository.ConfigRepository;
+import lombok.Setter;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -9,20 +10,23 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Service
+@Setter
 public class FileOpenService {
 
-    ConfigRepository configRepository;
-    FileOpenService(ConfigRepository C){
+    private final ConfigRepository configRepository;
+    String AppName;
+    public FileOpenService(ConfigRepository C){
         this.configRepository = C;
     }
 
     public Map<String,String> openFile(String appName)
     {
-
         try {
-            String path = "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/"+appName;
+            String name = configRepository.findById(appName).get().getAppName();
+            String path = "/Users/junghyun/IdeaProjects/hhhard/src/main/java/com/example/hhhard/apps/"+name;
             File file = new File(path);
             FileReader filereader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(filereader);
@@ -38,6 +42,11 @@ public class FileOpenService {
             filereader.close();
             bufferedReader.close();
             return map;
+        }
+        catch (NoSuchElementException e){
+            Map<String,String> map1 = new HashMap<>();
+            map1.put("Name", "NoSuchElementException");
+            return map1;
         }
         catch (FileNotFoundException e)
         {

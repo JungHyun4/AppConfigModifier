@@ -13,7 +13,7 @@ naverAccess:
   sellerWSDL: ./bin/main/wsdldev/order/SellerService.wsdl
   shopWSDL: ./bin/main/wsdldev/shopN/ShopNAPI.wsdl
   baseDir: C:/BainTest/Naver1
-    
+
 alias:
   - &NaverOrderCollect com.inspien.onlinemall.naver.OrderCollectSvc
   - &NaverChangedOrderCollect com.inspien.onlinemall.naver.ChangedOrderCollectSvc
@@ -30,7 +30,7 @@ interface:
     outbound:
       format: yyyy-MM-ddTHH:mm:ss.SSSZ
     response:
-      channel: 
+      channel:
         type: http
         url: *SBI
         method: POST
@@ -40,7 +40,7 @@ interface:
           ibn-doctype: OrderCollect
           ibn-channel: IBN_NAVERSHOP,BLUEBOX_XML_ORDER_01
           ibn-agentid: *AgentId
-          ibn-mailbox: *MailboxId 
+          ibn-mailbox: *MailboxId
       countOfSplit: 100
       decrypt: true
 
@@ -68,7 +68,7 @@ interface:
   ChangedOrder:
     service:
       name: *NaverChangedOrderCollect
-    outbound:
+    outbound: ""
     response:
       channel:
         type: http
@@ -89,7 +89,7 @@ interface:
     inbound:
       tgtPath: SHIPORDER
       backupPath: SHIPORDER_BACKUP
-    outbound:
+    outbound: ""
     response:
       channel:
         type: http
@@ -108,7 +108,7 @@ interface:
     inbound:
       tgtPath: INVENTORYUPDATE
       backupPath: INVENTORYUPDATE_BACKUP
-    outbound:
+    outbound: ""
     response:
       channel:
         type: http
@@ -121,15 +121,37 @@ interface:
           ibn-channel: IBN_NAVERSHOP,BLUEBOX_XML_STOCK_RESULT_01
           ibn-agentid: *AgentId
           ibn-mailbox: *MailboxId
-      
+
 schedule:
   OrderCollect1:
-    service: OrderCollect    
+    service: OrderCollect
     params:
+      # "P2DT3H4M"  -- parses as "2 days, 3 hours and 4 minutes"
+      #from: yyyy-MM-dd'T'15:50:00.000+09:00, -P1D
+      #to: yyyy-MM-dd'T'08:50:00.000+09:00
       from: 2012-01-03'T'15:50:00.000+09:00
       to: 2012-01-04'T'08:50:00.000+09:00
     time: '0 0 9 * * ? *'
-
+  #  OrderCollect2:
+  #    service: OrderCollect
+  #    params:
+  #      from: yyyy-MM-dd'T'08:50:00.000+09:00
+  #      to: yyyy-MM-dd'T'12:50:00.000+09:00
+  #    time: '0 0 13 * * ? *'
+  #  OrderConfirm:
+  #    service: OrderConfirm
+  #    params:
+  #    fileevent:
+  #      path: ORDERCONFIRM
+  #      includeOld: true
+  #      file: '*.txt'
+  #  ShipOrder:
+  #    service: ShipOrder
+  #    params:
+  #    fileevent:
+  #      path: SHIPORDER
+  #      includeOld: true
+  #      file: '*.*'
   InventoryUpdate:
     service: InventoryUpdate
     params:

@@ -3,7 +3,7 @@ alert:
   receiver:
     - hyunseok.jeon@inspien.co.kr;dongshin.lee@inspien.co.kr
   cc:
-    - hsjeon@inspien.co.kr 
+    - hsjeon@inspien.co.kr
 
 naverAccess:
   sellerId: ncp_1njja3_02
@@ -25,8 +25,8 @@ alias:
   - &SBI http://ibndev.inspien.co.kr:16888/INSPIEN_API666
 interface:
   OrderCollect:
-    service: 
-      name: *NaverOrderCollect    
+    service:
+      name: *NaverOrderCollect
     outbound:
       format: yyyy-MM-ddTHH:mm:ss.SSSZ
     response:
@@ -45,14 +45,14 @@ interface:
       decrypt: true
 
   OrderConfirm:
-    service: 
-      name: *NaverOrderConfirm    
+    service:
+      name: *NaverOrderConfirm
     inbound:
       tgtPath: ORDERCONFIRM
       backupPath: ORDERCONFIRM_BACKUP
     outbound: ""
     response:
-      channel: 
+      channel:
         type: http
         url: *SBI
         method: POST
@@ -62,15 +62,15 @@ interface:
           ibn-doctype: OrderConfirm
           ibn-channel: IBN_NAVERSHOP,BLUEBOX_XML_ORDER_CONFIRM_RESULT_01
           ibn-agentid: *AgentId
-          ibn-mailbox: *MailboxId 
+          ibn-mailbox: *MailboxId
       changedEvent: ChangedOrder
 
   ChangedOrder:
-    service: 
-      name: *NaverChangedOrderCollect    
+    service:
+      name: *NaverChangedOrderCollect
     outbound:
     response:
-      channel: 
+      channel:
         type: http
         url: *SBI
         method: POST
@@ -80,18 +80,18 @@ interface:
           ibn-doctype: OrderCollect
           ibn-channel: IBN_NAVERSHOP,BLUEBOX_XML_ORDER_CHANGE_01
           ibn-agentid: *AgentId
-          ibn-mailbox: *MailboxId 
+          ibn-mailbox: *MailboxId
       decrypt: true
-            
+
   ShipOrder:
-    service: 
-      name: *NaverShipOrder    
+    service:
+      name: *NaverShipOrder
     inbound:
       tgtPath: SHIPORDER
       backupPath: SHIPORDER_BACKUP
     outbound:
     response:
-      channel: 
+      channel:
         type: http
         url: *SBI
         method: POST
@@ -101,16 +101,16 @@ interface:
           ibn-doctype: ShipOrder
           ibn-channel: IBN_NAVERSHOP,BLUEBOX_XML_DELIVERY_RESULT_01
           ibn-agentid: *AgentId
-          ibn-mailbox: *MailboxId 
+          ibn-mailbox: *MailboxId
   InventoryUpdate:
-    service: 
+    service:
       name: *NaverInventoryUpdate
     inbound:
       tgtPath: INVENTORYUPDATE
       backupPath: INVENTORYUPDATE_BACKUP
     outbound:
     response:
-      channel: 
+      channel:
         type: http
         url: *SBI
         method: POST
@@ -120,42 +120,20 @@ interface:
           ibn-doctype: InventoryUpdate
           ibn-channel: IBN_NAVERSHOP,BLUEBOX_XML_STOCK_RESULT_01
           ibn-agentid: *AgentId
-          ibn-mailbox: *MailboxId       
+          ibn-mailbox: *MailboxId
       
 schedule:
   OrderCollect1:
     service: OrderCollect    
     params:
-      # "P2DT3H4M"  -- parses as "2 days, 3 hours and 4 minutes"
-      #from: yyyy-MM-dd'T'15:50:00.000+09:00, -P1D  
-      #to: yyyy-MM-dd'T'08:50:00.000+09:00
       from: 2012-01-03'T'15:50:00.000+09:00
       to: 2012-01-04'T'08:50:00.000+09:00
     time: '0 0 9 * * ? *'
-#  OrderCollect2:
-#    service: OrderCollect    
-#    params:
-#      from: yyyy-MM-dd'T'08:50:00.000+09:00
-#      to: yyyy-MM-dd'T'12:50:00.000+09:00
-#    time: '0 0 13 * * ? *'      
-#  OrderConfirm:
-#    service: OrderConfirm    
-#    params:
-#    fileevent:
-#      path: ORDERCONFIRM
-#      includeOld: true
-#      file: '*.txt'
-#  ShipOrder:
-#    service: ShipOrder    
-#    params:
-#    fileevent:
-#      path: SHIPORDER
-#      includeOld: true
-#      file: '*.*'
+
   InventoryUpdate:
-    service: InventoryUpdate    
+    service: InventoryUpdate
     params:
     fileevent:
       path: INVENTORYUPDATE
       includeOld: true
-      file: '*.*'      
+      file: '*.*'

@@ -3,6 +3,7 @@
     "@fortawesome/react-fontawesome": "github:fortawesome/react-fontawesome",
     "fortawesome": "^0.0.1-security",
     "fs": "^0.0.1-security",
+    "react-pro-sidebar": "^1.0.0",
     "yamljs": "^0.3.0"
   }
 }

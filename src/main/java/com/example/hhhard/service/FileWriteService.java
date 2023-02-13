@@ -7,7 +7,7 @@ import java.io.*;
 @Service
 public class FileWriteService {
 
-    private final ConfigRepository configRepository;
+    ConfigRepository configRepository;
     FileWriteService(ConfigRepository c){
         this.configRepository = c;
     }

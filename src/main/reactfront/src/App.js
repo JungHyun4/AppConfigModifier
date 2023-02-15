@@ -23,13 +23,13 @@ function App() {
                 <button className="text-mode" onClick={() => {
                     if (Content != "") {SetTextMode(true)
                     }
-                    else{alert("조회먼저하삼")}
+                    else{alert("조회먼저해주세요.")}
                 }
                 }>Text Mode</button><button className="tree-mode" onClick={() =>{
 
                 if (Content != "") {SetTextMode(false)
             }
-                else{alert("조회먼저하삼")}
+                else{alert("조회먼저해주세요.")}
             }
                 }>Tree Mode</button>
             </div>

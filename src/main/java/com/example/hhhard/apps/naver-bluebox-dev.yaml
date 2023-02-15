@@ -132,26 +132,26 @@ schedule:
       from: 2012-01-03'T'15:50:00.000+09:00
       to: 2012-01-04'T'08:50:00.000+09:00
     time: '0 0 9 * * ? *'
-  #  OrderCollect2:
-  #    service: OrderCollect
-  #    params:
-  #      from: yyyy-MM-dd'T'08:50:00.000+09:00
-  #      to: yyyy-MM-dd'T'12:50:00.000+09:00
-  #    time: '0 0 13 * * ? *'
-  #  OrderConfirm:
-  #    service: OrderConfirm
-  #    params:
-  #    fileevent:
-  #      path: ORDERCONFIRM
-  #      includeOld: true
-  #      file: '*.txt'
-  #  ShipOrder:
-  #    service: ShipOrder
-  #    params:
-  #    fileevent:
-  #      path: SHIPORDER
-  #      includeOld: true
-  #      file: '*.*'
+  OrderCollect2:
+    service: OrderCollect
+    params:
+      from: yyyy-MM-dd'T'08:50:00.000+09:00
+      to: yyyy-MM-dd'T'12:50:00.000+09:00
+    time: '0 0 13 * * ? *'
+  OrderConfirm:
+    service: OrderConfirm
+    params:
+    fileevent:
+      path: ORDERCONFIRM
+      includeOld: true
+      file: '*.txt'
+  ShipOrder:
+    service: ShipOrder
+    params:
+    fileevent:
+      path: SHIPORDER
+      includeOld: true
+      file: '*.*'
   InventoryUpdate:
     service: InventoryUpdate
     params:
